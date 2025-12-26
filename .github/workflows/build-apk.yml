@@ -23,38 +23,16 @@ jobs:
         sudo apt update
         sudo apt install -y git zip unzip openjdk-17-jdk autoconf libtool pkg-config zlib1g-dev libncurses-dev cmake libffi-dev libssl-dev build-essential ccache python3-pip python3-dev
     
-    - name: Install Buildozer and Cython
+    - name: Install Buildozer
       run: |
         pip install --upgrade buildozer cython
     
-    - name: Build APK with Buildozer
+    - name: Build APK
       run: |
         buildozer android debug
     
-    - name: Upload APK artifact
+    - name: Upload APK
       uses: actions/upload-artifact@v3
       with:
         name: remote-control-apk
         path: bin/*.apk
-        retention-days: 30
-```
-
-5. **Cliquer "Commit new file"**
-
----
-
-### **Étape 3 : L'onglet "Actions" Apparaîtra !**
-
-**Une fois le fichier créé correctement :**
-
-1. **Rafraîchir la page** (F5)
-2. **L'onglet "Actions" devrait apparaître** en haut à côté de "Code", "Issues", etc.
-3. **Cliquer dessus**
-4. **La compilation se lance automatiquement !**
-
----
-
-## 🎯 **Résumé**
-```
-❌ Mauvais: .github_workflows_build-apk.yml (avec underscores)
-✅ Bon: .github/workflows/build-apk.yml (avec slashes)
